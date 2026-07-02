@@ -144,72 +144,79 @@
 
   nav ul li a:hover { color: var(--text-dark); }
 
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(135deg, #f5ede3 0%, #faf2ec 50%, #f0e8e0 100%);
-    padding: 80px 24px 80px;
+  /* ── HERO SLIDER ── */
+  .hero-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #f5ede3;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    will-change: transform;
+  }
+
+  .slide {
+    min-width: 100%;
+    position: relative;
+  }
+
+  .slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 540px;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,0.85);
+    border: 1px solid var(--border);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 480px;
-    position: relative;
-    overflow: hidden;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s;
   }
 
-  .hero::before {
-    content: '';
+  .slider-btn:hover { background: #fff; }
+  .slider-btn svg { width: 18px; height: 18px; stroke: var(--text-dark); fill: none; stroke-width: 2; stroke-linecap: round; }
+  .slider-btn.prev { left: 20px; }
+  .slider-btn.next { right: 20px; }
+
+  .slider-dots {
     position: absolute;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: rgba(200,168,130,0.08);
-    right: -100px;
-    top: -100px;
-  }
-
-  .hero-content {
-    text-align: center;
-    max-width: 600px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--accent-dark);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    display: block;
-  }
-
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(38px, 6vw, 64px);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--text-dark);
-    margin-bottom: 18px;
-    letter-spacing: 0.02em;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent-dark);
-  }
-
-  .hero p {
-    font-size: 14px;
-    color: var(--text-mid);
-    margin-bottom: 36px;
-    line-height: 1.8;
-  }
-
-  .hero-btns {
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    gap: 14px;
-    justify-content: center;
-    flex-wrap: wrap;
+    gap: 8px;
+    z-index: 10;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.8);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .dot.active {
+    background: #fff;
+    transform: scale(1.2);
   }
 
   .btn-primary {
@@ -864,18 +871,61 @@
   </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <span class="hero-eyebrow">2025 Summer Collection</span>
-    <h1>피부가 원하는<br><em>단 하나의 루틴</em></h1>
-    <p>엄선된 브랜드의 프리미엄 스킨케어를 한 곳에서.<br>내 피부에 맞는 완벽한 제품을 찾아보세요.</p>
-    <div class="hero-btns">
-      <button class="btn-primary">신상품 보기</button>
-      <button class="btn-secondary">브랜드 둘러보기</button>
+<!-- HERO SLIDER -->
+<section class="hero-slider">
+  <div class="slider-track" id="sliderTrack">
+    <div class="slide">
+      <img src="main-soomvoni.png" alt="숨보니 말랑두 오일 샴푸">
+    </div>
+    <div class="slide">
+      <img src="main-pernu.png" alt="PERNU BUDE BARRIER 인샤워 바디로션">
+    </div>
+    <div class="slide">
+      <img src="main-roha.png" alt="LOHAROHEE 서머 듀 미스트">
+    </div>
+    <div class="slide">
+      <img src="main-aclive.png" alt="ACLIVE 풋 리프레셔">
     </div>
   </div>
+
+  <button class="slider-btn prev" onclick="moveSlide(-1)" aria-label="이전">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="slider-btn next" onclick="moveSlide(1)" aria-label="다음">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+
+  <div class="slider-dots">
+    <div class="dot active" onclick="goSlide(0)"></div>
+    <div class="dot" onclick="goSlide(1)"></div>
+    <div class="dot" onclick="goSlide(2)"></div>
+    <div class="dot" onclick="goSlide(3)"></div>
+  </div>
 </section>
+
+<script>
+  let current = 0;
+  const total = 4;
+  const track = document.getElementById('sliderTrack');
+  const dots = document.querySelectorAll('.dot');
+
+  function updateSlider() {
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function moveSlide(dir) {
+    current = (current + dir + total) % total;
+    updateSlider();
+  }
+
+  function goSlide(idx) {
+    current = idx;
+    updateSlider();
+  }
+
+  setInterval(() => moveSlide(1), 4000);
+</script>
 
 <!-- BRAND STRIP -->
 <div class="brand-strip">
@@ -928,20 +978,17 @@
   <div class="product-grid">
 
     <!-- Product 1 -->
-    <div class="product-card">
+    <a href="product-sumboni.html" class="product-card" style="display:block;">
       <div class="product-img">
-        <div class="product-img-placeholder" style="background:#f5ede3;">
-          <svg viewBox="0 0 24 24"><rect x="4" y="3" width="6" height="18" rx="2"/><rect x="14" y="7" width="6" height="14" rx="2"/></svg>
-          <span>SUMBONI</span>
-        </div>
+        <img src="숨_썸네일.png" alt="숨보니 말랑두 오일 샴푸" style="width:100%;height:100%;object-fit:cover;">
         <div class="badge badge-best">BEST</div>
-        <button class="wishlist-btn">
+        <button class="wishlist-btn" onclick="event.preventDefault()">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </button>
       </div>
       <div class="product-info">
         <div class="product-brand">SUMBONI</div>
-        <div class="product-name">말랑두 오일 샴푸 300ml</div>
+        <div class="product-name">말랑두 오일 샴푸 150ml</div>
         <div class="product-tags">
           <span class="product-tag">두피케어</span>
           <span class="product-tag">저자극</span>
@@ -956,25 +1003,22 @@
           <span class="star">★★★★★</span>
           <span class="review-count">(248)</span>
         </div>
-        <button class="add-cart-btn">담기</button>
+        <button class="add-cart-btn" onclick="event.preventDefault()">담기</button>
       </div>
-    </div>
+    </a>
 
     <!-- Product 2 -->
-    <div class="product-card">
+    <a href="product-pernu.html" class="product-card" style="display:block;">
       <div class="product-img">
-        <div class="product-img-placeholder" style="background:#eaf0f5;">
-          <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
-          <span>PERNU</span>
-        </div>
+        <img src="퍼누_썸네일.png" alt="PERNU BUDE BARRIER" style="width:100%;height:100%;object-fit:cover;">
         <div class="badge badge-new">NEW</div>
-        <button class="wishlist-btn">
+        <button class="wishlist-btn" onclick="event.preventDefault()">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </button>
       </div>
       <div class="product-info">
         <div class="product-brand">PERNU</div>
-        <div class="product-name">BUDE BARRIER 인샤워 바디로션 200ml</div>
+        <div class="product-name">BUDE BARRIER 인샤워 바디로션 300ml</div>
         <div class="product-tags">
           <span class="product-tag">히노키오일</span>
           <span class="product-tag">보습</span>
@@ -988,19 +1032,16 @@
           <span class="star">★★★★☆</span>
           <span class="review-count">(92)</span>
         </div>
-        <button class="add-cart-btn">담기</button>
+        <button class="add-cart-btn" onclick="event.preventDefault()">담기</button>
       </div>
-    </div>
+    </a>
 
     <!-- Product 3 -->
-    <div class="product-card">
+    <a href="product-aeclive.html" class="product-card" style="display:block;">
       <div class="product-img">
-        <div class="product-img-placeholder" style="background:#eaf5ed;">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg>
-          <span>AECLIVE</span>
-        </div>
+        <img src="애클_썸네일.png" alt="AECLIVE FOOT REFRESHER" style="width:100%;height:100%;object-fit:cover;">
         <div class="badge badge-sale">20%</div>
-        <button class="wishlist-btn">
+        <button class="wishlist-btn" onclick="event.preventDefault()">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </button>
       </div>
@@ -1008,8 +1049,8 @@
         <div class="product-brand">AECLIVE</div>
         <div class="product-name">FOOT REFRESHER 풋 스프레이 150ml</div>
         <div class="product-tags">
-          <span class="product-tag">발냄새케어</span>
-          <span class="product-tag">청결</span>
+          <span class="product-tag">발케어</span>
+          <span class="product-tag">수분미스트</span>
         </div>
         <div class="product-price">
           <span class="price-original">22,000원</span>
@@ -1021,31 +1062,29 @@
           <span class="star">★★★★★</span>
           <span class="review-count">(176)</span>
         </div>
-        <button class="add-cart-btn">담기</button>
+        <button class="add-cart-btn" onclick="event.preventDefault()">담기</button>
       </div>
-    </div>
+    </a>
 
     <!-- Product 4 -->
-    <div class="product-card">
+    <a href="product-loharohee.html" class="product-card" style="display:block;">
       <div class="product-img">
-        <div class="product-img-placeholder" style="background:#f5f0ea;">
-          <svg viewBox="0 0 24 24"><path d="M4 7h16v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-          <span>ROHARO HEE</span>
-        </div>
+        <img src="로하_썸네일.png" alt="LOHAROHEE 서머 듀 미스트" style="width:100%;height:100%;object-fit:cover;">
         <div class="badge badge-best">BEST</div>
-        <button class="wishlist-btn">
+        <button class="wishlist-btn" onclick="event.preventDefault()">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </button>
       </div>
       <div class="product-info">
-        <div class="product-brand">ROHARO HEE</div>
-        <div class="product-name">모닝듀 에센스 토너 150ml</div>
+        <div class="product-brand">LOHAROHEE</div>
+        <div class="product-name">서머 듀 미스트 50ml</div>
         <div class="product-tags">
           <span class="product-tag">수분</span>
-          <span class="product-tag">미니멀</span>
+          <span class="product-tag">쿨링케어</span>
         </div>
         <div class="product-price">
-          <span class="price-normal">45,000원</span>
+          <span class="price-original">48,000원</span>
+          <span class="price-sale">38,400원</span>
         </div>
       </div>
       <div class="product-footer">
@@ -1053,9 +1092,9 @@
           <span class="star">★★★★★</span>
           <span class="review-count">(314)</span>
         </div>
-        <button class="add-cart-btn">담기</button>
+        <button class="add-cart-btn" onclick="event.preventDefault()">담기</button>
       </div>
-    </div>
+    </a>
 
   </div>
 </div>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PERNU BUDE BARRIER — BEAUTÉ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#faf9f7;--white:#fff;--text-dark:#1a1a1a;--text-mid:#555;--text-light:#999;--border:#e8e4df;--accent:#c8a882;--accent-dark:#9e7d5a;--sale:#c0392b}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text-dark);font-size:14px}
+a{text-decoration:none;color:inherit}
+
+/* HEADER */
+.notice-bar{background:var(--text-dark);color:#fff;text-align:center;padding:9px;font-size:12px;letter-spacing:.05em}
+header{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.header-top{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:18px 24px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;letter-spacing:.18em}
+.header-icons{display:flex;gap:20px;align-items:center}
+.header-icons a{font-size:12px;color:var(--text-mid);letter-spacing:.04em;display:flex;flex-direction:column;align-items:center;gap:4px}
+.icon-svg{width:20px;height:20px;stroke:var(--text-dark);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+nav{border-top:1px solid var(--border)}
+nav ul{list-style:none;display:flex;justify-content:center;max-width:1200px;margin:0 auto;padding:0 24px;gap:36px}
+nav ul li a{display:block;padding:13px 0;font-size:12.5px;letter-spacing:.08em;color:var(--text-mid);font-weight:500}
+nav ul li a:hover{color:var(--text-dark)}
+
+/* BREADCRUMB */
+.breadcrumb{max-width:1200px;margin:0 auto;padding:16px 24px;font-size:12px;color:var(--text-light)}
+.breadcrumb a{color:var(--text-light)}
+.breadcrumb span{margin:0 6px}
+
+/* PRODUCT TOP */
+.product-top{max-width:1200px;margin:0 auto;padding:0 24px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.product-thumb{background:#f8f5f2;border:1px solid var(--border);overflow:hidden}
+.product-thumb img{width:100%;height:auto;display:block}
+.product-info-box{padding-top:8px}
+.product-brand-label{font-size:11px;color:var(--accent-dark);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;font-weight:500}
+.product-title{font-size:24px;font-weight:400;line-height:1.4;margin-bottom:8px;letter-spacing:-.01em}
+.product-subtitle{font-size:13px;color:var(--text-mid);margin-bottom:24px;line-height:1.6}
+.divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+.price-area{margin-bottom:24px}
+.price-original{font-size:13px;color:var(--text-light);text-decoration:line-through;margin-bottom:4px}
+.price-main{font-size:28px;font-weight:700;color:var(--text-dark)}
+.price-normal{color:var(--sale)}
+.price-tag{display:inline-block;background:var(--sale);color:#fff;font-size:11px;padding:3px 8px;margin-left:10px;vertical-align:middle}
+.info-table{width:100%;border-collapse:collapse;margin-bottom:24px;font-size:13px}
+.info-table tr{border-bottom:1px solid var(--border)}
+.info-table td{padding:10px 0}
+.info-table td:first-child{color:var(--text-light);width:80px}
+.qty-row{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.qty-btn{width:32px;height:32px;border:1px solid var(--border);background:var(--white);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.qty-num{font-size:15px;font-weight:500;min-width:24px;text-align:center}
+.btn-cart{width:100%;padding:16px;background:var(--text-dark);color:#fff;border:none;font-size:14px;letter-spacing:.08em;font-family:inherit;cursor:pointer;margin-bottom:12px;transition:background .2s}
+.btn-cart:hover{background:#333}
+.btn-wish{width:100%;padding:15px;background:transparent;color:var(--text-dark);border:1px solid var(--text-dark);font-size:14px;letter-spacing:.08em;font-family:inherit;cursor:pointer;transition:all .2s}
+.btn-wish:hover{background:var(--text-dark);color:#fff}
+.benefits-row{display:flex;gap:16px;margin-top:20px}
+.benefit-chip{flex:1;text-align:center;padding:12px 8px;border:1px solid var(--border);background:var(--white);font-size:11px;color:var(--text-mid);line-height:1.5}
+.benefit-chip strong{display:block;font-size:12px;color:var(--text-dark);margin-bottom:3px}
+
+/* DETAIL IMAGES */
+.detail-section{max-width:860px;margin:0 auto;padding:0 24px 80px}
+.detail-section img{width:100%;display:block}
+
+/* TAB */
+.tab-bar{border-bottom:1px solid var(--border);margin-bottom:48px;max-width:1200px;margin-left:auto;margin-right:auto;padding:0 24px}
+.tab-bar ul{display:flex;gap:0;list-style:none}
+.tab-bar ul li a{display:block;padding:14px 28px;font-size:13px;letter-spacing:.06em;color:var(--text-light);border-bottom:2px solid transparent;transition:all .2s}
+.tab-bar ul li a.active,.tab-bar ul li a:hover{color:var(--text-dark);border-bottom-color:var(--text-dark)}
+
+/* FOOTER */
+footer{background:var(--text-dark);color:rgba(255,255,255,.6);padding:48px 24px 28px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:.18em;color:#fff}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:12px;color:rgba(255,255,255,.4)}
+.footer-links a:hover{color:rgba(255,255,255,.8)}
+.footer-bottom{max-width:1200px;margin:20px auto 0;font-size:11px;color:rgba(255,255,255,.3);text-align:center}
+
+@media(max-width:768px){
+  .product-top{grid-template-columns:1fr;gap:28px}
+  .header-top{padding:14px 16px}
+  nav ul{gap:16px;overflow-x:auto;padding-bottom:4px}
+}
+</style>
+</head>
+<body>
+
+<div class="notice-bar">✦ 3만원 이상 구매 시 무료 배송 &nbsp;|&nbsp; 신규 가입 회원 10% 할인 쿠폰 증정 ✦</div>
+
+<header>
+  <div class="header-top">
+    <a href="index.html" class="logo">BEAUTÉ</a>
+    <div class="header-icons">
+      <a href="#"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>마이페이지</span></a>
+      <a href="#"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span>위시리스트</span></a>
+      <a href="#"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>장바구니</span></a>
+    </div>
+  </div>
+  <nav><ul>
+    <li><a href="index.html">신상품</a></li>
+    <li><a href="index.html">베스트</a></li>
+    <li><a href="index.html">스킨케어</a></li>
+    <li><a href="index.html">바디케어</a></li>
+    <li><a href="index.html">바디케어</a></li>
+    <li><a href="index.html">클렌징</a></li>
+    <li><a href="index.html">브랜드</a></li>
+    <li><a href="index.html" style="color:var(--sale)">SALE</a></li>
+  </ul></nav>
+</header>
+
+<div class="breadcrumb">
+  <a href="index.html">홈</a><span>›</span>
+  <a href="index.html">바디케어</a><span>›</span>
+  <a href="index.html">숨보니</a><span>›</span>
+  BUDE BARRIER 인샤워 바디로션
+</div>
+
+<div class="product-top">
+  <div class="product-thumb">
+    <img src="퍼누_썸네일.png" alt="숨보니 BUDE BARRIER 인샤워 바디로션">
+  </div>
+  <div class="product-info-box">
+    <div class="product-brand-label">PERNU</div>
+    <div class="product-title">BUDE BARRIER 인샤워 바디로션</div>
+    <div class="product-subtitle">IN-SHOWER BODY LOTION · Fresh Hinoki · 300ml</div>
+    <hr class="divider">
+    <div class="price-area">
+      
+      <div class="price-main price-normal">38,000원 <span </span></div>
+    </div>
+    <table class="info-table">
+      <tr><td>브랜드</td><td>퍼누 (PERNU)</td></tr>
+      <tr><td>용량</td><td>300ml / 10.14 fl. oz.</td></tr>
+      <tr><td>제품타입</td><td>인샤워 바디로션</td></tr>
+      <tr><td>원산지</td><td>MADE IN KOREA</td></tr>
+      <tr><td>배송</td><td>무료배송 (3만원 이상)</td></tr>
+    </table>
+    <div class="qty-row">
+      <button class="qty-btn" onclick="this.nextElementSibling.textContent=Math.max(1,+this.nextElementSibling.textContent-1)">−</button>
+      <span class="qty-num">1</span>
+      <button class="qty-btn" onclick="this.previousElementSibling.textContent=+this.previousElementSibling.textContent+1">+</button>
+    </div>
+    <button class="btn-cart">장바구니 담기</button>
+    <button class="btn-wish">위시리스트 추가</button>
+    <div class="benefits-row">
+      <div class="benefit-chip"><strong>무료배송</strong>3만원 이상</div>
+      <div class="benefit-chip"><strong>정품보증</strong>브랜드 직공급</div>
+      <div class="benefit-chip"><strong>30일 반품</strong>무료 교환</div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-bar">
+  <ul>
+    <li><a href="#detail" class="active">상세정보</a></li>
+    <li><a href="#review">구매후기 (92)</a></li>
+    <li><a href="#qna">Q&A</a></li>
+    <li><a href="#delivery">배송/교환/환불</a></li>
+  </ul>
+</div>
+
+<div class="detail-section" id="detail">
+  <img src="퍼누_상세-헤드.png" alt="퍼누 상세 이미지 1">
+  <img src="퍼누_상세-바디.png" alt="퍼누 상세 이미지 2">
+  <img src="퍼누_상세-푸터.png" alt="퍼누 상세 이미지 3">
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">BEAUTÉ</div>
+    <div class="footer-links">
+      <a href="#">공지사항</a>
+      <a href="#">이용약관</a>
+      <a href="#">개인정보처리방침</a>
+      <a href="#">고객센터</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 BEAUTÉ. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
