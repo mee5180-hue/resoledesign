@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEAUTÉ — 코스메틱 쇼핑몰</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #faf9f7;
+    --white: #ffffff;
+    --text-dark: #1a1a1a;
+    --text-mid: #555;
+    --text-light: #999;
+    --border: #e8e4df;
+    --accent: #c8a882;
+    --accent-dark: #9e7d5a;
+    --tag-bg: #f3ede6;
+    --pink: #f0e4e4;
+    --pink-text: #8b5e5e;
+    --green: #e4f0ea;
+    --green-text: #3d7a55;
+    --sale: #c0392b;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  img { display: block; width: 100%; }
+  button { cursor: pointer; font-family: inherit; }
+
+  /* ── TOP NOTICE ── */
+  .notice-bar {
+    background: var(--text-dark);
+    color: #fff;
+    text-align: center;
+    padding: 9px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 24px;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    color: var(--text-dark);
+  }
+
+  .header-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .header-icons a {
+    font-size: 12px;
+    color: var(--text-mid);
+    letter-spacing: 0.04em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .icon-svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--text-dark);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .cart-count {
+    background: var(--accent);
+    color: #fff;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+  }
+
+  .cart-wrap { position: relative; }
+
+  nav {
+    border-top: 1px solid var(--border);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    gap: 36px;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 13px 0;
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    color: var(--text-mid);
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  nav ul li a:hover { color: var(--text-dark); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #f5ede3 0%, #faf2ec 50%, #f0e8e0 100%);
+    padding: 80px 24px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 480px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(200,168,130,0.08);
+    right: -100px;
+    top: -100px;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent-dark);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 6vw, 64px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--text-dark);
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent-dark);
+  }
+
+  .hero p {
+    font-size: 14px;
+    color: var(--text-mid);
+    margin-bottom: 36px;
+    line-height: 1.8;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--text-dark);
+    color: #fff;
+    padding: 14px 34px;
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    border: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #333; }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-dark);
+    padding: 13px 34px;
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--text-dark);
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--text-dark); color: #fff; }
+
+  /* ── BRAND STRIP ── */
+  .brand-strip {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px;
+    overflow: hidden;
+  }
+
+  .brand-scroll {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    animation: scroll-brands 20s linear infinite;
+    width: max-content;
+  }
+
+  .brand-scroll span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    color: var(--text-light);
+    white-space: nowrap;
+    font-weight: 400;
+  }
+
+  @keyframes scroll-brands {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION COMMON ── */
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 70px 24px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 36px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--text-dark);
+  }
+
+  .section-sub {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  .view-all {
+    font-size: 12px;
+    color: var(--text-mid);
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .view-all:hover { color: var(--text-dark); }
+
+  /* ── CATEGORY TABS ── */
+  .cat-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .cat-tab {
+    padding: 8px 20px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 20px;
+  }
+
+  .cat-tab.active, .cat-tab:hover {
+    background: var(--text-dark);
+    color: #fff;
+    border-color: var(--text-dark);
+  }
+
+  /* ── PRODUCT GRID ── */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 24px;
+  }
+
+  .product-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+
+  .product-img {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    background: #f8f5f2;
+    position: relative;
+  }
+
+  .product-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--text-light);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
+  .product-img-placeholder svg {
+    width: 36px;
+    height: 36px;
+    stroke: #ccc;
+    fill: none;
+    stroke-width: 1;
+  }
+
+  .badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    font-weight: 500;
+  }
+
+  .badge-new { background: var(--text-dark); color: #fff; }
+  .badge-sale { background: var(--sale); color: #fff; }
+  .badge-best { background: var(--accent); color: #fff; }
+
+  .wishlist-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .product-card:hover .wishlist-btn { opacity: 1; }
+
+  .wishlist-btn svg {
+    width: 15px;
+    height: 15px;
+    stroke: var(--text-mid);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .product-info {
+    padding: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .product-brand {
+    font-size: 10px;
+    color: var(--accent-dark);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .product-name {
+    font-size: 13.5px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .product-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .product-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--tag-bg);
+    color: var(--accent-dark);
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  .product-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .price-original {
+    font-size: 11px;
+    color: var(--text-light);
+    text-decoration: line-through;
+  }
+
+  .price-sale {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--sale);
+  }
+
+  .price-normal {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  .product-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stars {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+  }
+
+  .star {
+    color: #e8b84b;
+    font-size: 12px;
+  }
+
+  .review-count {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-left: 4px;
+  }
+
+  .add-cart-btn {
+    font-size: 11px;
+    padding: 7px 14px;
+    background: var(--text-dark);
+    color: #fff;
+    border: none;
+    letter-spacing: 0.06em;
+    transition: background 0.2s;
+  }
+  .add-cart-btn:hover { background: #444; }
+
+  /* ── BANNER ── */
+  .banner-section {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .banner-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .banner-card {
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 240px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .banner-card-a { background: #f0ebe3; }
+  .banner-card-b { background: #e8eef0; }
+
+  .banner-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+  }
+
+  .banner-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .banner-desc {
+    font-size: 12.5px;
+    color: var(--text-mid);
+    margin-bottom: 24px;
+    line-height: 1.7;
+  }
+
+  .btn-link {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--text-dark);
+    padding-bottom: 2px;
+    display: inline-block;
+    width: fit-content;
+    transition: opacity 0.2s;
+  }
+  .btn-link:hover { opacity: 0.6; }
+
+  /* ── BENEFITS ── */
+  .benefits {
+    background: var(--text-dark);
+    padding: 48px 24px;
+  }
+
+  .benefits-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .benefit-item {
+    text-align: center;
+    color: #fff;
+    padding: 16px;
+  }
+
+  .benefit-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 14px;
+    stroke: rgba(255,255,255,0.7);
+    fill: none;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+  }
+
+  .benefit-title {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+
+  .benefit-desc {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── REVIEW ── */
+  .review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .review-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .reviewer-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .avatar-a { background: #f0e4e4; color: #8b5e5e; }
+  .avatar-b { background: #e4f0ea; color: #3d7a55; }
+  .avatar-c { background: #e4eaf0; color: #3d5a7a; }
+
+  .reviewer-info { flex: 1; }
+
+  .reviewer-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dark);
+  }
+
+  .reviewer-product {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  .review-text {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .review-date {
+    font-size: 11px;
+    color: var(--text-light);
+  }
+
+  /* ── NEWSLETTER ── */
+  .newsletter {
+    background: #f5ede3;
+    padding: 70px 24px;
+    text-align: center;
+  }
+
+  .newsletter-inner { max-width: 480px; margin: 0 auto; }
+
+  .newsletter h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+  }
+
+  .newsletter p {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 0;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .newsletter-input {
+    flex: 1;
+    padding: 13px 16px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    border-right: none;
+  }
+
+  .newsletter-input:focus { border-color: var(--accent); }
+
+  .newsletter-btn {
+    padding: 13px 22px;
+    background: var(--text-dark);
+    color: #fff;
+    border: none;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .newsletter-btn:hover { background: #333; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text-dark);
+    color: rgba(255,255,255,0.6);
+    padding: 60px 24px 30px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-brand .logo {
+    color: #fff;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .footer-brand p {
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-col h4 {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.45);
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: rgba(255,255,255,0.85); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .header-top { padding: 14px 16px; }
+    .hero { padding: 60px 16px; min-height: 360px; }
+    .banner-inner { grid-template-columns: 1fr; }
+    .benefits-inner { grid-template-columns: repeat(2, 1fr); }
+    .review-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    nav ul { gap: 20px; overflow-x: auto; padding-bottom: 4px; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .section { padding: 50px 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .benefits-inner { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP NOTICE -->
+<div class="notice-bar">✦ 3만원 이상 구매 시 무료 배송 &nbsp;|&nbsp; 신규 가입 회원 10% 할인 쿠폰 증정 ✦</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <a href="#" class="logo">BEAUTÉ</a>
+    <div style="display:flex; gap:12px; align-items:center;">
+      <input type="text" placeholder="브랜드, 제품명 검색..." style="padding:9px 16px; border:1px solid var(--border); background:#faf9f7; font-size:12.5px; font-family:inherit; width:220px; outline:none; letter-spacing:0.03em;">
+    </div>
+    <div class="header-icons">
+      <a href="#">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>마이페이지</span>
+      </a>
+      <a href="#">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span>위시리스트</span>
+      </a>
+      <a href="#" class="cart-wrap">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <div class="cart-count">2</div>
+        <span>장바구니</span>
+      </a>
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#">신상품</a></li>
+      <li><a href="#">베스트</a></li>
+      <li><a href="#">스킨케어</a></li>
+      <li><a href="#">바디케어</a></li>
+      <li><a href="#">헤어케어</a></li>
+      <li><a href="#">클렌징</a></li>
+      <li><a href="#">브랜드</a></li>
+      <li><a href="#" style="color:var(--sale);">SALE</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">2025 Summer Collection</span>
+    <h1>피부가 원하는<br><em>단 하나의 루틴</em></h1>
+    <p>엄선된 브랜드의 프리미엄 스킨케어를 한 곳에서.<br>내 피부에 맞는 완벽한 제품을 찾아보세요.</p>
+    <div class="hero-btns">
+      <button class="btn-primary">신상품 보기</button>
+      <button class="btn-secondary">브랜드 둘러보기</button>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND STRIP -->
+<div class="brand-strip">
+  <div class="brand-scroll">
+    <span>SUMBONI</span>
+    <span>·</span>
+    <span>PERNU</span>
+    <span>·</span>
+    <span>AECLIVE</span>
+    <span>·</span>
+    <span>ROHARO HEE</span>
+    <span>·</span>
+    <span>MAISON DE</span>
+    <span>·</span>
+    <span>LUMIÈRE</span>
+    <span>·</span>
+    <span>SUMBONI</span>
+    <span>·</span>
+    <span>PERNU</span>
+    <span>·</span>
+    <span>AECLIVE</span>
+    <span>·</span>
+    <span>ROHARO HEE</span>
+    <span>·</span>
+    <span>MAISON DE</span>
+    <span>·</span>
+    <span>LUMIÈRE</span>
+    <span>·</span>
+  </div>
+</div>
+
+<!-- BEST PRODUCTS -->
+<div class="section">
+  <div class="section-header">
+    <div>
+      <div class="section-title">베스트셀러</div>
+      <div class="section-sub">고객이 가장 많이 선택한 제품</div>
+    </div>
+    <a href="#" class="view-all">전체보기 →</a>
+  </div>
+
+  <div class="cat-tabs">
+    <button class="cat-tab active">전체</button>
+    <button class="cat-tab">스킨케어</button>
+    <button class="cat-tab">바디케어</button>
+    <button class="cat-tab">헤어케어</button>
+    <button class="cat-tab">클렌징</button>
+  </div>
+
+  <div class="product-grid">
+
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-img-placeholder" style="background:#f5ede3;">
+          <svg viewBox="0 0 24 24"><rect x="4" y="3" width="6" height="18" rx="2"/><rect x="14" y="7" width="6" height="14" rx="2"/></svg>
+          <span>SUMBONI</span>
+        </div>
+        <div class="badge badge-best">BEST</div>
+        <button class="wishlist-btn">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">SUMBONI</div>
+        <div class="product-name">말랑두 오일 샴푸 300ml</div>
+        <div class="product-tags">
+          <span class="product-tag">두피케어</span>
+          <span class="product-tag">저자극</span>
+        </div>
+        <div class="product-price">
+          <span class="price-original">32,000원</span>
+          <span class="price-sale">25,600원</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <div class="stars">
+          <span class="star">★★★★★</span>
+          <span class="review-count">(248)</span>
+        </div>
+        <button class="add-cart-btn">담기</button>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-img-placeholder" style="background:#eaf0f5;">
+          <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+          <span>PERNU</span>
+        </div>
+        <div class="badge badge-new">NEW</div>
+        <button class="wishlist-btn">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">PERNU</div>
+        <div class="product-name">BUDE BARRIER 인샤워 바디로션 200ml</div>
+        <div class="product-tags">
+          <span class="product-tag">히노키오일</span>
+          <span class="product-tag">보습</span>
+        </div>
+        <div class="product-price">
+          <span class="price-normal">38,000원</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <div class="stars">
+          <span class="star">★★★★☆</span>
+          <span class="review-count">(92)</span>
+        </div>
+        <button class="add-cart-btn">담기</button>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-img-placeholder" style="background:#eaf5ed;">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg>
+          <span>AECLIVE</span>
+        </div>
+        <div class="badge badge-sale">20%</div>
+        <button class="wishlist-btn">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">AECLIVE</div>
+        <div class="product-name">FOOT REFRESHER 풋 스프레이 150ml</div>
+        <div class="product-tags">
+          <span class="product-tag">발냄새케어</span>
+          <span class="product-tag">청결</span>
+        </div>
+        <div class="product-price">
+          <span class="price-original">22,000원</span>
+          <span class="price-sale">17,600원</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <div class="stars">
+          <span class="star">★★★★★</span>
+          <span class="review-count">(176)</span>
+        </div>
+        <button class="add-cart-btn">담기</button>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-img-placeholder" style="background:#f5f0ea;">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          <span>ROHARO HEE</span>
+        </div>
+        <div class="badge badge-best">BEST</div>
+        <button class="wishlist-btn">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">ROHARO HEE</div>
+        <div class="product-name">모닝듀 에센스 토너 150ml</div>
+        <div class="product-tags">
+          <span class="product-tag">수분</span>
+          <span class="product-tag">미니멀</span>
+        </div>
+        <div class="product-price">
+          <span class="price-normal">45,000원</span>
+        </div>
+      </div>
+      <div class="product-footer">
+        <div class="stars">
+          <span class="star">★★★★★</span>
+          <span class="review-count">(314)</span>
+        </div>
+        <button class="add-cart-btn">담기</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BANNER -->
+<div class="banner-section">
+  <div class="banner-inner">
+    <div class="banner-card banner-card-a">
+      <div class="banner-eyebrow">Summer Special</div>
+      <div class="banner-title">여름 스킨케어<br>기획전</div>
+      <div class="banner-desc">뜨거운 여름, 지친 피부를 위한<br>수분 충전 특별 기획전</div>
+      <a href="#" class="btn-link">기획전 보기 →</a>
+    </div>
+    <div class="banner-card banner-card-b">
+      <div class="banner-eyebrow">New Brand</div>
+      <div class="banner-title">신규 입점 브랜드<br>20% 할인</div>
+      <div class="banner-desc">새롭게 합류한 프리미엄 브랜드를<br>특별 할인가로 만나보세요</div>
+      <a href="#" class="btn-link">브랜드 둘러보기 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- NEW ARRIVALS -->
+<div class="section">
+  <div class="section-header">
+    <div>
+      <div class="section-title">신상품</div>
+      <div class="section-sub">가장 먼저 만나는 새로운 제품</div>
+    </div>
+    <a href="#" class="view-all">전체보기 →</a>
+  </div>
+
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-img-placeholder" style="background:#f8f0f5;">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="10"/><path d="M12 2v20M2 12h20" stroke-opacity="0.4"/></svg>
+          <span>PERNU</span>
+        </div>
+        <div class="badge badge-new">NEW</div>
+        <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">PERNU</div>
+        <div class="product-name">DEW BARRIER 페이셜 세럼 30ml</div>
+        <div class="product-tags"><span class="product-tag">진정</span><span class="product-tag">장벽케어</span></div>
+        <div class="product-price"><span class="price-normal">52,000원</span></div>
+      </div>
+      <div class="product-footer">
+        <div class="stars"><span class="star">★★★★☆</span><span class="review-count">(31)</span></div>
+        <button class="add-cart-btn">담기</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-img-placeholder" style="background:#f0f5ea;">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg>
+          <span>SUMBONI</span>
+        </div>
+        <div class="badge badge-new">NEW</div>
+        <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">SUMBONI</div>
+        <div class="product-name">베이비 스칼프 두피앰플 50ml</div>
+        <div class="product-tags"><span class="product-tag">두피영양</span><span class="product-tag">모발강화</span></div>
+        <div class="product-price"><span class="price-normal">41,000원</span></div>
+      </div>
+      <div class="product-footer">
+        <div class="stars"><span class="star">★★★★★</span><span class="review-count">(8)</span></div>
+        <button class="add-cart-btn">담기</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-img-placeholder" style="background:#eaf0f8;">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>AECLIVE</span>
+        </div>
+        <div class="badge badge-new">NEW</div>
+        <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">AECLIVE</div>
+        <div class="product-name">클린 풋 마스크 팩 10매</div>
+        <div class="product-tags"><span class="product-tag">각질케어</span><span class="product-tag">보습</span></div>
+        <div class="product-price"><span class="price-normal">18,000원</span></div>
+      </div>
+      <div class="product-footer">
+        <div class="stars"><span class="star">★★★★☆</span><span class="review-count">(44)</span></div>
+        <button class="add-cart-btn">담기</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-img-placeholder" style="background:#f5eaf0;">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span>ROHARO HEE</span>
+        </div>
+        <div class="badge badge-new">NEW</div>
+        <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">ROHARO HEE</div>
+        <div class="product-name">나이트 리페어 슬리핑 크림 60ml</div>
+        <div class="product-tags"><span class="product-tag">야간재생</span><span class="product-tag">안티에이징</span></div>
+        <div class="product-price"><span class="price-original">58,000원</span><span class="price-sale">46,400원</span></div>
+      </div>
+      <div class="product-footer">
+        <div class="stars"><span class="star">★★★★★</span><span class="review-count">(19)</span></div>
+        <button class="add-cart-btn">담기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<div class="benefits">
+  <div class="benefits-inner">
+    <div class="benefit-item">
+      <svg class="benefit-icon" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <div class="benefit-title">무료 배송</div>
+      <div class="benefit-desc">3만원 이상 구매 시<br>전국 무료 배송</div>
+    </div>
+    <div class="benefit-item">
+      <svg class="benefit-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="benefit-title">정품 보증</div>
+      <div class="benefit-desc">브랜드 직거래<br>100% 정품 보장</div>
+    </div>
+    <div class="benefit-item">
+      <svg class="benefit-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <div class="benefit-title">30일 반품</div>
+      <div class="benefit-desc">구매 후 30일 이내<br>무료 반품/교환</div>
+    </div>
+    <div class="benefit-item">
+      <svg class="benefit-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <div class="benefit-title">1:1 상담</div>
+      <div class="benefit-desc">피부 전문 상담사<br>맞춤 제품 추천</div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="section">
+  <div class="section-header">
+    <div>
+      <div class="section-title">고객 리뷰</div>
+      <div class="section-sub">실제 구매 고객의 솔직한 후기</div>
+    </div>
+    <a href="#" class="view-all">전체보기 →</a>
+  </div>
+  <div class="review-grid">
+    <div class="review-card">
+      <div class="review-header">
+        <div class="reviewer-avatar avatar-a">김*연</div>
+        <div class="reviewer-info">
+          <div class="reviewer-name">김*연</div>
+          <div class="reviewer-product">말랑두 오일 샴푸</div>
+          <div class="stars" style="margin-top:4px;"><span class="star" style="font-size:11px;">★★★★★</span></div>
+        </div>
+      </div>
+      <div class="review-text">두피가 예민한 편인데 자극 없이 부드럽게 세정되고 향이 너무 좋아요. 사용한 지 한 달 됐는데 모발에도 확실히 윤기가 생겼어요. 재구매 의사 100%입니다.</div>
+      <div class="review-date">2025.06.12</div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="reviewer-avatar avatar-b">박*민</div>
+        <div class="reviewer-info">
+          <div class="reviewer-name">박*민</div>
+          <div class="reviewer-product">BUDE BARRIER 바디로션</div>
+          <div class="stars" style="margin-top:4px;"><span class="star" style="font-size:11px;">★★★★★</span></div>
+        </div>
+      </div>
+      <div class="review-text">샤워 중에 바르는 제품이라 처음엔 반신반의했는데 보습력이 진짜 대박이에요. 씻고 나서 피부가 촉촉하게 유지되는 게 느껴져요. 히노키 향도 너무 좋고요.</div>
+      <div class="review-date">2025.06.08</div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="reviewer-avatar avatar-c">이*지</div>
+        <div class="reviewer-info">
+          <div class="reviewer-name">이*지</div>
+          <div class="reviewer-product">FOOT REFRESHER 풋 스프레이</div>
+          <div class="stars" style="margin-top:4px;"><span class="star" style="font-size:11px;">★★★★☆</span></div>
+        </div>
+      </div>
+      <div class="review-text">여름에 딱 필요한 제품이에요. 가방에 넣고 다니면서 외출 중에도 쓰고 있어요. 냄새 걱정이 사라졌고 발도 개운해서 만족스럽습니다.</div>
+      <div class="review-date">2025.05.29</div>
+    </div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="newsletter-inner">
+    <h2>뉴스레터 구독</h2>
+    <p>신제품 소식과 프로모션을 가장 먼저 받아보세요.<br>구독 즉시 5% 할인 쿠폰을 드립니다.</p>
+    <div class="newsletter-form">
+      <input class="newsletter-input" type="email" placeholder="이메일 주소를 입력해주세요">
+      <button class="newsletter-btn">구독하기</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo">BEAUTÉ</span>
+      <p>엄선된 코스메틱 브랜드와<br>함께하는 뷰티 라이프스타일 쇼핑몰.<br>내 피부에 꼭 맞는 제품을 찾아보세요.</p>
+    </div>
+    <div class="footer-col">
+      <h4>쇼핑</h4>
+      <ul>
+        <li><a href="#">신상품</a></li>
+        <li><a href="#">베스트셀러</a></li>
+        <li><a href="#">브랜드관</a></li>
+        <li><a href="#">기획전</a></li>
+        <li><a href="#">SALE</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>고객지원</h4>
+      <ul>
+        <li><a href="#">공지사항</a></li>
+        <li><a href="#">자주 묻는 질문</a></li>
+        <li><a href="#">1:1 문의</a></li>
+        <li><a href="#">배송/반품 안내</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>회사</h4>
+      <ul>
+        <li><a href="#">브랜드 소개</a></li>
+        <li><a href="#">입점 문의</a></li>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">이용약관</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 BEAUTÉ. All rights reserved.</span>
+    <span>사업자등록번호 000-00-00000 | 통신판매업신고 제0000-경기부천-0000호</span>
+  </div>
+</footer>
+
+</body>
+</html>
