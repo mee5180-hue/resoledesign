@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RESOLE | 배리어 로션 300 mL</title>
+  <meta name="description" content="포트폴리오용 쇼핑몰 데모 페이지 - RESOLE 배리어 로션 300mL" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="top-banner">포트폴리오 데모 페이지 · 실제 결제는 동작하지 않습니다.</div>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top">RESOLE</a>
+      <nav class="nav">
+        <a href="#product">상품정보</a>
+        <a href="#detail">상세설명</a>
+        <a href="#faq">자주 묻는 질문</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero-banner wrap">
+      <img src="assets/banner/main-banner.png" alt="RESOLE 배리어 로션 메인 배너" />
+    </section>
+
+    <section id="product" class="product wrap">
+      <div class="gallery-panel">
+        <div class="gallery-main card"><img id="mainImage" src="assets/thumbs/thum01_00001_.png" alt="RESOLE 대표 이미지" /></div>
+        <div class="thumb-grid">
+          <button class="thumb active" data-image="assets/thumbs/thum01_00001_.png"><img src="assets/thumbs/thum01_00001_.png" alt="썸네일 1"></button>
+          <button class="thumb" data-image="assets/thumbs/thum02_00001_.png"><img src="assets/thumbs/thum02_00001_.png" alt="썸네일 2"></button>
+          <button class="thumb" data-image="assets/thumbs/thum03_00001_.png"><img src="assets/thumbs/thum03_00001_.png" alt="썸네일 3"></button>
+          <button class="thumb" data-image="assets/thumbs/thum04_00001_.png"><img src="assets/thumbs/thum04_00001_.png" alt="썸네일 4"></button>
+          <button class="thumb" data-image="assets/thumbs/thum05_00001_.png"><img src="assets/thumbs/thum05_00001_.png" alt="썸네일 5"></button>
+          <button class="thumb" data-image="assets/thumbs/thum06_00001_.png"><img src="assets/thumbs/thum06_00001_.png" alt="썸네일 6"></button>
+        </div>
+      </div>
+
+      <aside class="purchase-panel card">
+        <p class="eyebrow">RESOLE 공식 스토어</p>
+        <h1>RESOLE 배리어 로션</h1>
+        <p class="sub-title">배리어 로션 300 mL · For Dry & Sensitive Skin</p>
+        <div class="price-box">
+          <div class="event-chip">런칭 이벤트</div>
+          <div class="price-line"><span class="origin">31,900원</span><span class="discount">31% OFF</span></div>
+          <div class="sale-price">21,900원</div>
+          <p class="delivery">무료배송 · 오늘 출발 예정</p>
+        </div>
+        <ul class="key-points">
+          <li>300 mL 대용량으로 얼굴부터 건조한 바디 부위까지 넉넉하게 사용</li>
+          <li>스쿠알란 · 판테놀 · 엑토인 중심의 보습 포뮬러 컨셉</li>
+          <li>매일 편하게 사용하는 데일리 보습 루틴</li>
+        </ul>
+        <div class="option-box"><label for="optionSelect">구성 선택</label><select id="optionSelect"><option value="1">1개 구매</option><option value="2">2개 세트</option></select></div>
+        <div class="quantity-box"><span>수량</span><div class="qty-control"><button type="button" id="minusBtn">-</button><input type="number" id="qtyInput" min="1" value="1" /><button type="button" id="plusBtn">+</button></div></div>
+        <div class="total-box"><span>총 상품금액</span><strong id="totalPrice">21,900원</strong></div>
+        <div class="action-row"><button class="btn btn-light">장바구니</button><button class="btn btn-primary">바로구매</button></div>
+      </aside>
+    </section>
+
+    <section class="trust wrap">
+      <div class="trust-item card"><strong>300 mL</strong><span>얼굴부터 건조한 곳까지 넉넉한 용량</span></div>
+      <div class="trust-item card"><strong>6 TYPES</strong><span>히알루론산 계열 6종 배합</span></div>
+      <div class="trust-item card"><strong>5 TYPES</strong><span>세라마이드 5종 배합</span></div>
+      <div class="trust-item card"><strong>DAILY MOISTURE</strong><span>매일 사용하는 보습 루틴</span></div>
+    </section>
+
+    <section id="detail" class="detail wrap">
+      <div class="section-title"><h2>상세설명</h2><p>상세페이지 아트보드와 영상이 실제 쇼핑몰 형태로 조립된 데모입니다.</p></div>
+      <div class="detail-stack">
+        <div class="video-block card"><div class="video-frame"><video autoplay muted loop playsinline preload="auto" poster="assets/detail/S01.png"><source src="assets/videos/S01.mp4" type="video/mp4"></video><img class="video-overlay" src="assets/overlays/text_S01.png" alt="S01 텍스트 오버레이" /></div></div>
+        <img class="detail-image" src="assets/detail/S02.png" alt="상세페이지 S02" />
+        <img class="detail-image" src="assets/detail/S03.png" alt="상세페이지 S03" />
+        <img class="detail-image" src="assets/detail/S04.png" alt="상세페이지 S04" />
+        <img class="detail-image" src="assets/detail/S05.png" alt="상세페이지 S05" />
+        <div class="video-block card"><div class="video-frame"><video autoplay muted loop playsinline preload="metadata" poster="assets/detail/S06.png"><source src="assets/videos/S06.mp4" type="video/mp4"></video><img class="video-overlay" src="assets/overlays/text_S06.png" alt="S06 텍스트 오버레이" /></div></div>
+        <img class="detail-image" src="assets/detail/S07.png" alt="상세페이지 S07" />
+        <img class="detail-image" src="assets/detail/S08.png" alt="상세페이지 S08" />
+        <img class="detail-image" src="assets/detail/S09.png" alt="상세페이지 S09" />
+        <div class="video-block card"><div class="video-frame"><video autoplay muted loop playsinline preload="metadata" poster="assets/detail/S10.png"><source src="assets/videos/S10.mp4" type="video/mp4"></video><img class="video-overlay" src="assets/overlays/text_S10.png" alt="S10 텍스트 오버레이" /></div></div>
+        <img class="detail-image" src="assets/detail/S11.png" alt="상세페이지 S11" />
+        <img class="detail-image" src="assets/detail/S12.png" alt="상세페이지 S12" />
+        <img class="detail-image" src="assets/detail/S13.png" alt="상세페이지 S13" />
+        <div class="video-block card"><div class="video-frame"><video autoplay muted loop playsinline preload="metadata" poster="assets/detail/S14.png"><source src="assets/videos/S14.mp4" type="video/mp4"></video><img class="video-overlay" src="assets/overlays/text_S14.png" alt="S14 텍스트 오버레이" /></div></div>
+        <img class="detail-image" src="assets/detail/S15.png" alt="상세페이지 S15" />
+        <img class="detail-image" src="assets/detail/S16.png" alt="상세페이지 S16" />
+        <img class="detail-image" src="assets/detail/S17.png" alt="상세페이지 S17" />
+        <img class="detail-image" src="assets/detail/S18.png" alt="상세페이지 S18" />
+        <img class="detail-image" src="assets/detail/S18-1.png" alt="상세페이지 S18-1" />
+        <img class="detail-image" src="assets/detail/S19.png" alt="상세페이지 S19" />
+        <img class="detail-image" src="assets/detail/S20.png" alt="상세페이지 S20" />
+        <img class="detail-image" src="assets/detail/S21.png" alt="상세페이지 S21" />
+        <img class="detail-image" src="assets/detail/S22.png" alt="상세페이지 S22" />
+        <img class="detail-image" src="assets/detail/S23.png" alt="상세페이지 S23" />
+      </div>
+    </section>
+
+    <section id="faq" class="faq wrap">
+      <div class="section-title"><h2>자주 묻는 질문</h2><p>쇼핑몰 테스트용 FAQ 영역입니다.</p></div>
+      <div class="faq-list">
+        <details class="card" open><summary>Q. 얼굴에도 사용 가능한가요?</summary><p>상세페이지 기획 기준으로 얼굴부터 건조함이 신경 쓰이는 부위까지 사용하는 제품으로 구성했습니다.</p></details>
+        <details class="card"><summary>Q. 용량은 얼마나 되나요?</summary><p>300 mL입니다.</p></details>
+        <details class="card"><summary>Q. 영상 위 글씨는 이미지인가요?</summary><p>영상 위에 Photoshop에서 만든 투명 PNG를 동일 비율로 겹쳐 구현했습니다.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobile-buybar"><div><strong>21,900원</strong><span>런칭 31% OFF</span></div><button class="btn btn-primary">구매하기</button></div>
+  <script src="script.js"></script>
+</body>
+</html>
