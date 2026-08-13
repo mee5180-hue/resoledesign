@@ -10,30 +10,108 @@
 /* BLACK & GOLD PREMIUM ART DIRECTION v02 */
 :root{--ink:#f4f0e7;--soft:#c6bcaa;--pale:#111111;--sage:#181817;--gray:#f4f0e7;--gold:#b48a42;--line:rgba(180,138,66,.46);--black:#0b0c0d}
 body{background:#050505;color:var(--ink)}.page{background:#0b0c0d}.scene{background:#0b0c0d;border-bottom-color:rgba(230,216,185,.12)}.eyebrow{color:#caa867}.hero{background:radial-gradient(ellipse at 75% 86%,#362815 0%,#17130d 23%,#0b0c0d 60%,#050505 100%)}.hero:before{content:'';position:absolute;inset:29px;border:1px solid rgba(180,138,66,.38);pointer-events:none}.hero h1,.hero .product-name,.scene-head,.product-split .copy h2{color:#f4f0e7}.hero .lead,.scene-sub,.product-split .copy p{color:#d4c9b4}.warm,.pale,.sage{background:#141414}.gray,.ivory{background:#f4f0e7;color:#171717}.gray .scene-head,.gray .scene-sub,.ivory .scene-head,.ivory .scene-sub{color:#171717}.gray .eyebrow,.ivory .eyebrow{color:#87672f}.goldline{background:#b48a42;width:64px}.video-scene{background:#050505;border-top:1px solid rgba(180,138,66,.35);border-bottom:1px solid rgba(180,138,66,.35)}.moment,.usp article,.ing-card,.fact,.summary{background:#191918;border-color:rgba(180,138,66,.55);box-shadow:inset 0 1px 0 rgba(230,216,185,.07)}.moment span,.use span{background:rgba(10,10,10,.9);color:#ead7ab;border:1px solid rgba(180,138,66,.48)}.problem-card{background:#171717;border-color:rgba(180,138,66,.55);color:#d9cdb7}.quick div{background:#1b1916;border-top-color:#b48a42;color:#ead7ab}.usp b,.ing-card b,.fact b{color:#e4bf73}.usp p,.ing-card p,.fact span{color:#c9bfad}.use{background:#161616;border:1px solid rgba(180,138,66,.4)}.usage-scene{background:#0d0d0d}.usage-scene:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#0b0c0d 0%,rgba(11,12,13,.82) 46%,rgba(11,12,13,.12) 100%);pointer-events:none}.step{background:#171717;border-color:#b48a42;color:#ead7ab}.step strong{color:#d4ae66}.step b{color:#f4f0e7}.water{background:#101010 url('../04_assets/generated/v02/A-13_blackgold_water.jpg') center/cover no-repeat}.ingredient-hero{background:#0f1010 url('../04_assets/generated/v02/A-15_blackgold_ingredient.jpg') center/cover no-repeat}.ing-card{background:rgba(18,18,17,.92)}.complex .bubble{border-color:#b48a42;background:#151514;color:#e4bf73}.ingredient-list{background:#171717;border-color:rgba(180,138,66,.5);color:#d6ccba}.gray .ingredient-list{background:#fffdf7;border-color:#baa470;color:#2a2926}.chips .chip{background:#181817;border-color:#b48a42;color:#e4bf73}.check-grid p{border-bottom-color:rgba(180,138,66,.42);color:#ded4c3}.check-grid p:before{color:#d4a952}.brand-scene{background:radial-gradient(ellipse at 77% 88%,#3a2a13 0%,#19150e 30%,#0c0c0c 65%)}.note{color:#ead9b3;background:rgba(11,12,13,.88);border-color:rgba(180,138,66,.55)}.qa{border-top-color:#c9af77}.qa b{color:#2a2926}.qa p{color:#4b4841}.cta{background:radial-gradient(ellipse at 50% 88%,#3a2a13 0%,#16120d 27%,#0b0c0d 70%)}.footer{background:#050505;color:#e8d4a6;border-top:1px solid rgba(180,138,66,.5)}.footer p{color:#b9b0a1}
-/* DETAIL-ONLY DESKTOP RATIO SCALING */
-@media(max-width:999px){
-html{overflow-x:hidden}
-body{width:1000px;min-width:1000px;overflow-x:hidden;zoom:var(--mist-detail-scale,1)}
-.page{width:1000px;max-width:none}
+/* FULL RESPONSIVE DETAIL LAYOUT */
+@media(max-width:900px){
+html,body{max-width:100%;overflow-x:hidden}
+body{width:auto;min-width:0;zoom:1;letter-spacing:-.03em}
+.page{width:100%;max-width:100%}
+img,video{max-width:100%}
+.scene{min-height:680px;padding:88px clamp(42px,7vw,64px)}
+.hero{min-height:850px;padding-top:105px}
+.hero h1{font-size:clamp(52px,7.5vw,64px)}
+.hero .lead{font-size:clamp(23px,3.5vw,28px)}
+.hero .product-name{font-size:clamp(19px,2.8vw,22px)}
+.scene-head{font-size:clamp(42px,6vw,52px)}
+.scene-sub{font-size:clamp(21px,3.2vw,25px)}
+.product-split{min-height:780px}
+.product-split .copy h2{font-size:clamp(46px,6.4vw,56px)}
+.product-split .copy p{font-size:clamp(22px,3.3vw,26px)}
+.usage-scene{min-height:700px}
+.cta{min-height:900px}
+.footer{padding-inline:clamp(42px,7vw,64px)}
+}
+@media(max-width:760px){
+html,body{max-width:100%;overflow-x:hidden}
+body{width:auto;min-width:0;zoom:1;letter-spacing:-.02em}
+.page{width:100%;max-width:100%}
+.scene{min-height:0;padding:54px clamp(18px,5.4vw,28px)}
+.scene h1,.scene h2,.scene h3,.scene p,.scene b,.scene span,.footer{word-break:keep-all;overflow-wrap:break-word}
+.eyebrow{margin-bottom:13px;font-size:clamp(10px,2.8vw,12px);line-height:1.5;letter-spacing:.08em;overflow-wrap:anywhere}
+.scene-head{width:100%;max-width:none;font-size:clamp(25px,7.4vw,34px);line-height:1.3;letter-spacing:-.045em}
+.scene-sub{width:100%;max-width:none;margin-top:17px;font-size:clamp(15px,4.25vw,18px);line-height:1.65}
+.hero{min-height:0;padding-top:62px;padding-bottom:34px}
+.hero:before{inset:12px}
+.hero .text-over{width:100%}
+.hero h1{width:100%;font-size:clamp(29px,8.3vw,36px);line-height:1.27;letter-spacing:-.05em}
+.hero .lead{width:100%;margin-top:18px;font-size:clamp(16px,4.5vw,19px);line-height:1.6}
+.hero .product-name{margin-top:10px;font-size:clamp(14px,4vw,17px);line-height:1.55}
+.hero-img{display:block;position:relative;right:auto;bottom:auto;width:min(78%,290px);max-width:none;height:auto;margin:30px auto 0;object-fit:contain}
+.video-scene video{display:block;width:100%;height:auto;max-height:none;aspect-ratio:auto;object-fit:contain}
+.moment-grid,.usp,.uses,.steps,.ing-grid,.ing-grid-4,.summary-grid{grid-template-columns:1fr;gap:12px;margin-top:30px}
+.moment,.use{min-height:0}
+.moment img,.use img{display:block;width:100%;height:auto;object-fit:contain}
+.moment span,.use span{left:12px;bottom:12px;padding:7px 9px;font-size:12px}
+.problem-card{margin-top:30px;padding:20px;font-size:clamp(15px,4.3vw,17px);line-height:1.7}
+.quick{display:grid;grid-template-columns:1fr;gap:8px;margin-top:30px}
+.quick div{width:100%;padding:15px 10px;font-size:14px}
+.product-split{min-height:0}
+.product-split .copy{width:100%;padding-top:0}
+.product-split .copy h2{font-size:clamp(27px,7.9vw,36px);line-height:1.3;letter-spacing:-.05em}
+.product-split .copy p{margin-top:18px;font-size:clamp(15px,4.3vw,18px);line-height:1.65}
+.split-img{display:block;position:relative;right:auto;bottom:auto;width:min(78%,290px);max-width:none;height:auto;margin:30px auto 0;object-fit:contain}
+.usp article,.ing-card{min-height:0;padding:20px 18px}
+.usp b,.ing-card b{font-size:clamp(20px,5.8vw,25px);line-height:1.28}
+.usp p,.ing-card p{margin-top:12px;font-size:15px;line-height:1.65}
+.usage-scene{min-height:0;padding-bottom:0}
+.usage-scene:after{display:none}
+.usage-scene .text-over{width:100%}
+.usage-scene .usage-photo{display:block;position:relative;right:auto;bottom:auto;width:100%;height:auto;margin:32px auto 0;object-fit:contain;opacity:1}
+.step{min-height:0;padding:18px 14px}
+.step strong{margin-bottom:8px;font-size:13px}
+.step b{font-size:20px;line-height:1.4}
+.water,.ingredient-hero{min-height:0;padding-bottom:clamp(330px,100vw,520px);background-size:100% auto;background-position:center bottom;background-repeat:no-repeat}
+.water .text-over,.ingredient-hero .text-over{width:100%;max-width:none}
+.note{display:block;padding:13px 14px;font-size:14px;line-height:1.65}
+.complex,.chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));justify-items:center;gap:12px 6px;margin-top:30px}
+.bubble,.chip{width:68px;height:68px;font-size:17px}
+.ingredient-list{margin-top:28px;padding:18px 15px;font-size:13px;line-height:1.75;word-break:keep-all;overflow-wrap:anywhere}
+.fact-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:30px}
+.fact{min-height:0;padding:18px 14px}
+.fact b{font-size:clamp(18px,5vw,22px);line-height:1.25}
+.fact span{margin-top:10px;font-size:13px;line-height:1.5}
+.check-grid{grid-template-columns:1fr;gap:0;margin-top:28px}
+.check-grid p{padding:14px 3px;font-size:15px;line-height:1.6}
+.check-grid p:before{padding-right:9px}
+.brand-scene{min-height:0;padding-bottom:30px}
+.brand-scene .text-over{width:100%;padding-top:0}
+.brand-scene .brand-photo{display:block;position:relative;right:auto;bottom:auto;width:min(78%,290px);max-width:none;height:auto;margin:30px auto 0;object-fit:contain}
+.faq{margin-top:28px}
+.qa{padding:17px 0}
+.qa b{font-size:17px;line-height:1.5}
+.qa p{margin-top:7px;font-size:14px;line-height:1.75}
+.summary{min-height:0;padding:18px 14px;font-size:16px;line-height:1.45}
+.cta{min-height:0;padding-bottom:30px}
+.cta-img{display:block;position:relative;left:auto;bottom:auto;transform:none;width:min(78%,290px);max-width:none;height:auto;margin:32px auto 0;object-fit:contain}
+.footer{padding:24px 20px}
+.footer b{font-size:13px;line-height:1.45;letter-spacing:.01em}
+.footer p{margin-top:9px;font-size:11px;line-height:1.7;letter-spacing:0;word-break:keep-all;overflow-wrap:break-word}
+}
+@media(max-width:420px){
+.scene{padding:48px 18px}
+.scene-head{font-size:clamp(24px,7.3vw,30px)}
+.hero{padding-top:56px;padding-bottom:30px}
+.hero h1{font-size:clamp(28px,8.1vw,33px)}
+.hero-img,.split-img,.brand-scene .brand-photo,.cta-img{width:min(82%,260px)}
+.usage-scene .usage-photo{width:calc(100% + 36px);max-width:none;margin-inline:-18px}
+.water,.ingredient-hero{padding-bottom:clamp(300px,96vw,410px)}
+.fact-grid{grid-template-columns:1fr}
+.complex,.chips{gap:10px 4px}
+.bubble,.chip{width:64px;height:64px;font-size:16px}
+.footer{padding:21px 18px}
+.footer b{font-size:12px}
+.footer p{font-size:10px}
 }
 </style>
-<script>
-(() => {
-  const desktopWidth = 1000;
-  const root = document.documentElement;
-
-  const applyDetailScale = () => {
-    const viewportWidth = root.clientWidth || window.innerWidth;
-    root.style.setProperty('--mist-detail-scale', String(Math.min(1, viewportWidth / desktopWidth)));
-  };
-
-  applyDetailScale();
-  document.addEventListener('DOMContentLoaded', applyDetailScale, { once: true });
-  window.addEventListener('load', applyDetailScale, { once: true });
-  window.addEventListener('resize', applyDetailScale, { passive: true });
-  window.visualViewport?.addEventListener('resize', applyDetailScale, { passive: true });
-})();
-</script>
 </head>
 <body><main class="page">
 <!-- S01 -->

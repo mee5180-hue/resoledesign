@@ -379,3 +379,20 @@
   .hero-track { transition: none; }
 }
 
+/* RESPONSIVE COPYRIGHT */
+@media (max-width: 720px) {
+  .store-footer {
+    padding: 24px 0;
+  }
+
+  .store-footer strong {
+    font-size: 16px;
+  }
+
+  .store-footer p {
+    margin-top: 5px;
+    font-size: 11px;
+    line-height: 1.65;
+    word-break: keep-all;
+  }
+}
