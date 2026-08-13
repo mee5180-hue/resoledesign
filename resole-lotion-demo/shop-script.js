@@ -1,20 +1,4 @@
 (() => {
-  const desktopWidth = 1280;
-  const root = document.documentElement;
-
-  const applyDesktopScale = () => {
-    const viewportWidth = root.clientWidth || window.innerWidth;
-    root.style.setProperty('--resole-page-scale', String(Math.min(1, viewportWidth / desktopWidth)));
-  };
-
-  applyDesktopScale();
-  document.addEventListener('DOMContentLoaded', applyDesktopScale, { once: true });
-  window.addEventListener('load', applyDesktopScale, { once: true });
-  window.addEventListener('resize', applyDesktopScale, { passive: true });
-  window.visualViewport?.addEventListener('resize', applyDesktopScale, { passive: true });
-})();
-
-(() => {
   const carousel = document.querySelector('[data-carousel]');
   if (!carousel) return;
 
@@ -111,8 +95,9 @@
       const documentElement = detailFrame.contentDocument?.documentElement;
       const body = detailFrame.contentDocument?.body;
       if (!documentElement || !body) return;
+      const frameScale = Number.parseFloat(getComputedStyle(body).zoom) || 1;
       detailFrame.style.height = '1px';
-      detailFrame.style.height = `${Math.max(documentElement.scrollHeight, body.scrollHeight)}px`;
+      detailFrame.style.height = `${Math.ceil(Math.max(documentElement.scrollHeight, body.scrollHeight) * frameScale)}px`;
     } catch (_) {
       detailFrame.style.height = '2000px';
     }
