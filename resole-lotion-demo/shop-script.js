@@ -1,4 +1,20 @@
 (() => {
+  const desktopWidth = 1280;
+  const root = document.documentElement;
+
+  const applyDesktopScale = () => {
+    const viewportWidth = root.clientWidth || window.innerWidth;
+    root.style.setProperty('--resole-page-scale', String(Math.min(1, viewportWidth / desktopWidth)));
+  };
+
+  applyDesktopScale();
+  document.addEventListener('DOMContentLoaded', applyDesktopScale, { once: true });
+  window.addEventListener('load', applyDesktopScale, { once: true });
+  window.addEventListener('resize', applyDesktopScale, { passive: true });
+  window.visualViewport?.addEventListener('resize', applyDesktopScale, { passive: true });
+})();
+
+(() => {
   const carousel = document.querySelector('[data-carousel]');
   if (!carousel) return;
 
