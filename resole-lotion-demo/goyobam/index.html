@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROOTEDIT GOYOBAM 상세페이지</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #f2ede7; }
+    body { overflow-x: hidden; }
+    .artboards { width: 100%; max-width: 1088px; margin: 0 auto; background: #fff; line-height: 0; }
+    .artboards img, .artboards video { display: block; width: 100%; height: auto; margin: 0; border: 0; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  </style>
+</head>
+<body>
+  <main class="artboards">
+    <h1 class="sr-only">ROOTEDIT GOYOBAM 고요밤 150 ml 상세페이지</h1>
+    <video autoplay muted loop playsinline preload="metadata" poster="../assets/goyobam/shop/thumb01.png" aria-label="고요밤 상세 영상 1" width="1912" height="1084"><source src="../assets/goyobam/detail/01.mp4" type="video/mp4"></video>
+    <img src="../assets/goyobam/detail/02.png" alt="고요밤 상세 아트보드 2" width="1088" height="1436" fetchpriority="high" />
+    <video autoplay muted loop playsinline preload="metadata" poster="../assets/goyobam/detail/02.png" aria-label="고요밤 상세 영상 3" width="1912" height="1084"><source src="../assets/goyobam/detail/03.mp4" type="video/mp4"></video>
+    <img src="../assets/goyobam/detail/04.png" alt="고요밤 상세 아트보드 4" width="1088" height="1343" loading="lazy" />
+    <img src="../assets/goyobam/detail/05.png" alt="고요밤 상세 아트보드 5" width="1088" height="1349" loading="lazy" />
+    <img src="../assets/goyobam/detail/06.png" alt="고요밤 상세 아트보드 6" width="1088" height="1344" loading="lazy" />
+    <img src="../assets/goyobam/detail/07.png" alt="고요밤 상세 아트보드 7" width="1088" height="1344" loading="lazy" />
+    <video autoplay muted loop playsinline preload="metadata" poster="../assets/goyobam/detail/07.png" aria-label="고요밤 상세 영상 8" width="1912" height="1084"><source src="../assets/goyobam/detail/08.mp4" type="video/mp4"></video>
+    <img src="../assets/goyobam/detail/09.png" alt="고요밤 상세 아트보드 9" width="1088" height="1450" loading="lazy" />
+    <img src="../assets/goyobam/detail/10.png" alt="고요밤 상세 아트보드 10" width="1088" height="1430" loading="lazy" />
+    <img src="../assets/goyobam/detail/11.png" alt="고요밤 상세 아트보드 11" width="1088" height="1344" loading="lazy" />
+    <img src="../assets/goyobam/detail/12.png" alt="고요밤 상세 아트보드 12" width="1088" height="1344" loading="lazy" />
+    <img src="../assets/goyobam/detail/13.png" alt="고요밤 상세 아트보드 13" width="1088" height="1635" loading="lazy" />
+    <img src="../assets/goyobam/detail/14.png" alt="고요밤 상세 아트보드 14" width="1088" height="1605" loading="lazy" />
+  </main>
+  <script>
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('video').forEach((video) => {
+        video.removeAttribute('autoplay');
+        video.pause();
+        video.controls = true;
+      });
+    }
+  </script>
+</body>
+</html>
